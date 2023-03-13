@@ -1,0 +1,143 @@
+button#toggle-button {
+  display: none !important;
+}
+
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.8rem 3.25rem 0;
+  overflow: hidden;
+}
+
+h2 {
+  font-weight: 500 !important;
+  font-size: 1.375rem !important;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  font-family: 'Rubik', sans-serif !important;
+}
+
+nav#toolbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+ul#links-list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+ul#links-list > li > a {
+  font-size: 1rem;
+  color: #fbfbfb;
+  font-weight: 400;
+  line-height: 24px;
+  font-family: 'Prompt', sans-serif;
+  text-decoration: none;
+  transition: all 0.2s linear;
+}
+
+ul#links-list > li > a.active {
+  font-weight: 700;
+}
+
+ul#links-list > li > a:hover {
+  filter: brightness(1.2);
+}
+
+ul#links-list > li + li,
+nav#toolbar-nav > .button-container {
+  margin-left: 2.25rem;
+}
+
+.header-icon {
+  color: #e5d9b8;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  header {
+    padding: 2.8rem 1.5rem 0;
+  }
+
+  ul#links-list > li + li,
+  nav#toolbar-nav > .button-container {
+    margin-left: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav#toolbar-nav {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  #logo-div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  nav#toolbar-nav,
+  #links-list {
+    align-items: flex-end;
+  }
+
+  button#toggle-button {
+    display: block !important;
+    transition: all 0.2s linear;
+    background: transparent;
+    border: none;
+  }
+
+  nav#toolbar-nav {
+    width: 100%;
+    flex-direction: column;
+    transition: all 0.4s linear;
+    height: 0;
+  }
+
+  nav.open {
+    height: 16rem !important;
+  }
+
+  ul#links-list {
+    flex-direction: column;
+  }
+
+  ul#links-list > li {
+    margin-bottom: 1rem;
+  }
+
+  ul#links-list > li + li,
+  nav#toolbar-nav > .button-container {
+    margin-left: 0;
+  }
+
+  nav#toolbar-nav > .button-container {
+    align-self: flex-end;
+  }
+}

@@ -1,0 +1,27 @@
+#wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 0 1.5rem;
+  background: radial-gradient(
+    86.56% 128.35% at 20.09% 59.73%,
+    #2c35a2 1%,
+    #252c88 16%,
+    #1b2167 40%,
+    #15194f 62%,
+    #101540 83%,
+    #0f133b 100%
+  );
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+#content {
+  flex: 1;
+}

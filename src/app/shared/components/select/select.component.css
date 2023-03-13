@@ -1,0 +1,131 @@
+::ng-deep .mat-select-arrow {
+  opacity: 0;
+}
+
+::ng-deep .mat-form-field-flex {
+  padding: 0 0.75rem !important;
+}
+
+::ng-deep .mat-form-field {
+  color: #1c534a !important;
+}
+
+::ng-deep .mat-form-field-prefix {
+  color: #8b8b8b;
+  font-weight: 400 !important;
+  font-style: normal;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
+}
+
+.input-right-align {
+  text-align: right;
+  color: #1c534a;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.input-right-align {
+  -moz-appearance: textfield;
+}
+
+::ng-deep .mat-select-placeholder {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 400;
+  color: #8b8b8b;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+::ng-deep .mat-form-field-flex {
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-infix {
+  width: 7.0625rem;
+}
+
+::ng-deep .mat-form-field-flex {
+  background-color: #f5f5f5 !important;
+}
+
+.select-field {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+
+  display: flex;
+  align-items: center;
+  min-height: 3.4375rem;
+  height: 100%;
+  padding: 0 0.75rem;
+}
+
+.select-label {
+  font-family: 'Prompt', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-container {
+  display: flex;
+  align-items: center;
+}
+
+.default-selected-container {
+  background-color: #e3e3e3;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5625rem 0.5rem;
+
+  font-family: 'Prompt', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #040404;
+  min-height: 3.4375rem;
+  min-width: 12.75rem;
+  height: 100%;
+}
+
+.token-icon {
+  margin-right: 0.5rem;
+  width: 25px;
+  height: 25px;
+}
+
+.selectDisabled {
+  background-color: red !important;
+}
+
+#select-arrow {
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+  right: 0.3125rem;
+  top: calc(50% - 10px);
+}

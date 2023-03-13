@@ -1,0 +1,48 @@
+<div
+  *ngIf="!!selectedItem && !canChange; else select"
+  class="default-selected-container"
+>
+  <img
+    [src]="'../../../../assets/icons/' + selectedItem.icon"
+    class="token-icon"
+  />
+  <span>{{ selectedItem.name }}</span>
+</div>
+
+<ng-template #select>
+  <mat-form-field appearance="fill" class="select-field">
+    <mat-select
+      [placeholder]="placeholder"
+      [(ngModel)]="selectedItem"
+      (valueChange)="selectionChange($event)"
+      [disabled]="!canChange"
+    >
+      <mat-select-trigger *ngIf="!!selectedItem">
+        <div class="selected-container">
+          <img
+            [src]="'../../../../assets/icons/' + selectedItem.icon"
+            class="token-icon"
+          />
+          <span>{{ selectedItem.name }}</span>
+        </div>
+      </mat-select-trigger>
+
+      <mat-option *ngFor="let item of list" [value]="item">
+        <div class="option-container">
+          <img
+            class="token-icon"
+            [src]="'../../../../assets/icons/' + item.icon"
+          />
+          <span>{{ item.name }}</span>
+        </div>
+      </mat-option>
+    </mat-select>
+
+    <img
+      *ngIf="canChange"
+      id="select-arrow"
+      [src]="getArrowPathByType()"
+      matSuffix
+    />
+  </mat-form-field>
+</ng-template>

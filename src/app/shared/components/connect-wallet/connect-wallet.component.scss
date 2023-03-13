@@ -1,0 +1,17 @@
+button {
+  background-color: transparent;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  padding: 11px 0;
+  font-size: 1.125rem;
+  border-radius: 20px;
+  color: #fbfbfb;
+  min-width: 174px;
+  border: 2px solid #6DE0F6;
+  transition: all 0.2s linear;
+  text-align: center;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+}

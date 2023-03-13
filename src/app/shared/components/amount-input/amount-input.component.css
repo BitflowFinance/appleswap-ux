@@ -1,0 +1,62 @@
+.input-container {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+
+  display: flex;
+  padding: 0.5rem 0.5625rem;
+
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.4375rem;
+}
+
+.prefix {
+  font-family: "Prompt", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  color: #8b8b8b;
+}
+
+.secondary-prefix {
+  color: #8b8b8b;
+  font-family: "Prompt", sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  align-self: center;
+  font-size: 0.6875rem;
+  max-width: 7.0625rem;
+}
+
+#amount-input {
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  font-family: "Prompt", sans-serif;
+  font-weight: 400;
+  color: #144b42;
+
+  font-size: 1.125rem;
+  max-width: 7.0625rem;
+  background-color: #f5f5f5;
+
+  outline: none;
+}
+
+.sliderVariant {
+  max-width: 3.4375rem !important;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #144b42;
+}
+
+.noMinHeight {
+  min-height: 0 !important;
+}

@@ -1,0 +1,26 @@
+<div class="input-container" [ngClass]="{noMinHeight: noMinHeight}">
+  <span *ngIf="hasPrefix && prefixStyleType === 'primary'" class="prefix">
+    {{ prefixValue }}
+  </span>
+  <span
+    *ngIf="hasPrefix && prefixStyleType === 'secondary'"
+    class="secondary-prefix"
+  >
+    {{ prefixValue }}
+  </span>
+  <input
+    id="amount-input"
+    #inputRef
+    [ngClass]="{ sliderVariant: isSliderAmount }"
+    type="number"
+    [min]="min"
+    [max]="max"
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="onInput($event)"
+    (keyup)="onKeyUp($event)"
+    [disabled]="disabled"
+    *ngIf="!valueIsLoading"
+  />
+  <mat-spinner *ngIf="valueIsLoading" [diameter]="20"></mat-spinner>
+</div>

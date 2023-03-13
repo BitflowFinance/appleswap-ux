@@ -1,0 +1,23 @@
+<header>
+  <h2>StableSwapper Dex</h2>
+
+  <nav id="toolbar-nav" [ngClass]="{ open: isOpen }">
+    <ul id="links-list">
+      <li (click)="toggleMenu()">
+        <a routerLink="/home" routerLinkActive="active">Home</a>
+      </li>
+      <ng-container *ngIf="isUserSignedIn()">
+        <li *ngFor="let page of authenticatedPages" (click)="toggleMenu()">
+          <a
+            [routerLink]="'/' + page.toLowerCase()"
+            routerLinkActive="active"
+            >{{ page }}</a
+          >
+        </li>
+      </ng-container>
+    </ul>
+    <div class="button-container">
+      <app-connect-wallet></app-connect-wallet>
+    </div>
+  </nav>
+</header>
