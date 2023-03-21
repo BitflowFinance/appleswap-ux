@@ -37,7 +37,8 @@
               "@scure/bip39/wordlists/english",
               "cross-fetch/polyfill",
               "c32check",
-              "lodash.clonedeep"
+              "lodash.clonedeep",
+              "base64-js"
             ]
           },
           "configurations": {

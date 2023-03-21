@@ -1,0 +1,195 @@
+#swap-section {
+  width: 100%;
+  height: 100%;
+  padding: 3.625rem 0;
+}
+
+#swap-box {
+  width: fit-content;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #161b53 0%, #1f2676 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 1.375rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.swap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.settings-button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+}
+
+.settings-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: all 0.2s linear;
+}
+
+.settings-icon:hover {
+  transform: rotate(90deg);
+}
+
+#swap-title {
+  color: #fbfbfb;
+  font-weight: 500;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+div.token-container {
+  background: rgba(11, 46, 65, 0.5);
+  border: 1px solid #3845b9;
+  padding: 1.8rem 1.75rem;
+}
+
+div.token-container > div.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.select-field {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+}
+
+.balance-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+  color: #fbfbfb;
+  font-style: normal;
+  margin-top: 8px;
+}
+
+.switchTokensContainer {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  z-index: 2;
+}
+
+#swap-arrow-down {
+  width: 32px;
+  height: 32px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  z-index: 2;
+}
+
+#swap-button {
+  width: 100%;
+  padding: 12px 0;
+  font-family: 'Prompt', sans-serif;
+  font-size: 18px;
+  text-align: center;
+  transition: all 0.2s linear;
+  line-height: 140%;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  color: #fbfbfb;
+  background-color: #3844c9;
+  border-radius: 28px;
+  border: none;
+  font-weight: 400;
+}
+
+.connect-wallet-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.token-icon {
+  margin-right: 0.5rem;
+  width: 25px;
+  height: 25px;
+}
+
+.select-label {
+  font-family: 'Prompt', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 590px) {
+  #swap-section {
+    padding: 3.625rem 1rem;
+  }
+
+  #swap-box {
+    width: 100%;
+  }
+
+  div.token-container {
+    width: 100%;
+  }
+
+  div.token-container > div.fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+.swap-rate {
+  margin: 0.75rem auto;
+  font-family: Rubik, sans-serif;
+  color: #fbfbfb;
+
+  strong,
+  span {
+    font-weight: 400 !important;
+  }
+
+  span {
+    color: #8b8b8b;
+  }
+}
+
+.settings-button {
+  position: absolute;
+  top: 28px;
+  right: 1.375rem;
+
+  img {
+    transition: all 0.2s linear;
+  }
+
+  &:hover {
+    img {
+      transform: rotate(90deg);
+    }
+  }
+}

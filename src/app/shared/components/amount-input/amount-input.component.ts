@@ -13,7 +13,7 @@ import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs'
 @Component({
   selector: 'app-amount-input',
   templateUrl: './amount-input.component.html',
-  styleUrls: ['./amount-input.component.css']
+  styleUrls: ['./amount-input.component.scss']
 })
 export class AmountInputComponent implements OnInit, AfterViewInit {
   @Input()

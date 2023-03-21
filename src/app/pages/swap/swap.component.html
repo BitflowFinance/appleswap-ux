@@ -1,1 +1,97 @@
-<p>swap works!</p>
+<div *ngIf="userSession.isUserSignedIn()">
+  <section id="swap-section">
+    <div id="swap-box">
+      <div class="swap-header">
+        <!-- <div class="empty-div"></div> -->
+        <h2 id="swap-title" class="font-prompt">Swap</h2>
+      </div>
+
+      <div class="token-container">
+        <div class="fields">
+          <app-select
+            [list]="tokenList"
+            (onChange)="selectToken($event, 'A')"
+            [selectedItem]="tokenAItem"
+          ></app-select>
+
+          <app-amount-input
+            #tokenAmount_A
+            [value]="tokenA_amt"
+            (onEndEditing)="updateTokenAmount($event, 'A')"
+            prefixValue=""
+          ></app-amount-input>
+        </div>
+        <div *ngIf="!!tokenAItem" class="balance-container">
+          <span>
+            Balance:
+            {{
+              tokenAItem.name == 'RED APPLES'
+                ? redApplesBalance
+                : greenApplesBalance
+            }}
+          </span>
+          <span style="opacity: 0">#</span>
+        </div>
+      </div>
+
+      <button class="switchTokensContainer" (click)="switchTokens()">
+        <img
+          id="swap-arrow-down"
+          src="../../assets/icons/swap-arrow-down.svg"
+          alt="Arrow down"
+        />
+      </button>
+
+      <div class="token-container">
+        <div class="fields">
+          <app-select
+            [list]="tokenList"
+            (onChange)="selectToken($event, 'B')"
+            [selectedItem]="tokenBItem"
+            arrowType="secondary"
+          ></app-select>
+
+          <app-amount-input
+            #tokenAmount_B
+            [value]="tokenB_amt"
+            (valueChange)="updateTokenAmount($event, 'B')"
+            [disabled]="true"
+            [valueIsLoading]="tokenBAmtLoading"
+            prefixValue=""
+          ></app-amount-input>
+        </div>
+        <div *ngIf="!!tokenBItem" class="balance-container">
+          <span>
+            Balance:
+            {{
+              tokenBItem.name == 'RED APPLES'
+                ? redApplesBalance
+                : greenApplesBalance
+            }}
+          </span>
+          <span style="opacity: 0">#</span>
+        </div>
+      </div>
+
+      <div class="swap-rate">
+        <strong>1 RED APPLE = 1 </strong><span>GREEN APPLE</span>
+      </div>
+
+      <button
+        id="swap-button"
+        (click)="swapXforY(tokenAItem, tokenBItem, tokenA_amt, tokenB_amt)"
+        [disabled]="!(tokenAItem && tokenBItem && tokenB_amt > 0)"
+      >
+        Swap
+      </button>
+
+      <button class="settings-button" (click)="openTransactionSettings()">
+        <img src="../../../assets/icons/setting.svg" alt="Settings Icon" />
+      </button>
+    </div>
+  </section>
+</div>
+
+<div class="connect-wallet-container" *ngIf="!userSession.isUserSignedIn()">
+  <app-connect-wallet></app-connect-wallet>
+</div>

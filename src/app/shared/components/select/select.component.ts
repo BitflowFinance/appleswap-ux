@@ -7,7 +7,7 @@ const SECONDARY_ARROW_PATH = '../../../../assets/icons/arrow-down-secondary.svg'
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.css']
+  styleUrls: ['./select.component.scss']
 })
 export class SelectComponent implements OnInit {
   @Input()

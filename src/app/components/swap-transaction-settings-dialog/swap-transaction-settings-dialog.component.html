@@ -1,0 +1,36 @@
+<section>
+  <header>
+    <div class="empty-div"></div>
+    <h3>Transaction Settings</h3>
+    <button id="icon-button" type="button" mat-dialog-close>
+      <img src="../../../assets/icons/closecircle.svg" alt="X icon - close" />
+    </button>
+  </header>
+
+  <main>
+    <div class="token-container slider-section">
+      <div class="fields">
+        <div class="max-180">
+          <app-amount-input
+            [(value)]="slippageTolerance"
+            [min]="0.01"
+            [max]="1"
+            [isSliderAmount]="true"
+            prefixValue="Slippage Tolerance"
+            prefixStyleType="secondary"
+            [noMinHeight]="true"
+          ></app-amount-input>
+        </div>
+        <mat-slider min="0.01" max="1.00" step="0.01">
+          <input
+            matSliderThumb
+            [value]="slippageTolerance"
+            (valueChange)="updateSlippageTolerance($event)"
+          />
+        </mat-slider>
+      </div>
+    </div>
+
+    <button id="confirm-button" (click)="confirm()">Confirm</button>
+  </main>
+</section>
