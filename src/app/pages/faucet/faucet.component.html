@@ -1,1 +1,32 @@
-<p>faucet works!</p>
+<section *ngIf="userSession.isUserSignedIn()" id="mint-section">
+  <div id="mint-box">
+    <h2 id="mint-title">Mint</h2>
+
+    <div class="token-container">
+      <div class="fields">
+        <app-select
+          [list]="tokenList"
+          (onChange)="selectToken($event)"
+        ></app-select>
+
+        <app-amount-input [(value)]="mintAmount"></app-amount-input>
+      </div>
+
+      <div class="hint">
+        <span>Max = 10000 Tokens per txn.</span>
+      </div>
+    </div>
+
+    <button
+      class="confirm-button"
+      [disabled]="!(tokenChoice && mintAmount > 0)"
+      (click)="mintTokens()"
+    >
+      Confirm
+    </button>
+  </div>
+</section>
+
+<div class="connect-wallet-container" *ngIf="!userSession.isUserSignedIn()">
+  <app-connect-wallet></app-connect-wallet>
+</div>
