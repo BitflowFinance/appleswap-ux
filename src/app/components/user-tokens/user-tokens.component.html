@@ -1,0 +1,44 @@
+<div *ngIf="userSession.isUserSignedIn()" class="tokens-container">
+  <div
+    *ngIf="
+      (!!redApplesBalance && redApplesBalance !== '0.00') ||
+        (!!greenApplesBalance && greenApplesBalance !== '0.00') ||
+        (!!greRedLpBalance && greRedLpBalance !== '0.00');
+      else hint
+    "
+    class="user-tokens"
+  >
+    <div class="token-balance">
+      <img
+        src="../../../assets/icons/red-apple.svg"
+        alt="RED APPLES icon"
+        class="token-icon"
+      />
+      <span>{{ redApplesBalance }} <span>RED APPLES</span></span>
+    </div>
+    <div class="token-balance">
+      <img
+        src="../../../assets/icons/green-apple.svg"
+        alt="GREEN APPLES icon"
+        class="token-icon"
+      />
+      <span>{{ greenApplesBalance }} <span>GREEN APPLES</span></span>
+    </div>
+    <div class="token-balance">
+      <img
+        src="../../../assets/icons/gre-red-lp.svg"
+        alt="GRE-RED-LP icon"
+        class="token-icon"
+      />
+      <span>{{ greRedLpBalance }} <span>GRE-RED-LP</span></span>
+    </div>
+  </div>
+
+  <ng-template #hint>
+    <div class="hint">
+      <span class="font-rubik">
+        Go to the Faucet page and mint some tokens!
+      </span>
+    </div>
+  </ng-template>
+</div>

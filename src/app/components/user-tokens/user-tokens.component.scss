@@ -1,0 +1,55 @@
+.tokens-container {
+  width: 100%;
+  background: #0D135A;
+  margin-top: 1rem;
+}
+
+.hint {
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+.hint > span {
+  color: #fbfbfb;
+  font-weight: 400;
+  line-height: 1.125rem;
+}
+
+.user-tokens {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.3125rem 0;
+}
+
+.token-balance {
+  display: flex;
+  align-items: center;
+}
+
+.token-icon {
+  margin-right: 0.75rem;
+  width: auto;
+  height: 18px;
+}
+
+.token-balance > span {
+  font-family: "Rubik", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  color: #fbfbfb;
+  font-style: normal;
+}
+
+.token-balance > span > span {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 530px) {
+  .token-balance > span > span {
+    display: none;
+  }
+}

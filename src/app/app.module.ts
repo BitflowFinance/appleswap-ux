@@ -15,7 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatSliderModule } from '@angular/material/slider'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
-import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { UserTokensComponent } from './components/user-tokens/user-tokens.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
     PoolComponent,
     EarnComponent,
     FaucetComponent,
-    SwapTransactionSettingsDialogComponent
+    SwapTransactionSettingsDialogComponent,
+    UserTokensComponent
   ],
   imports: [
     BrowserModule,
