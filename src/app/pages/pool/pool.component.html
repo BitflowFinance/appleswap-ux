@@ -1,1 +1,124 @@
-<p>pool works!</p>
+<section *ngIf="userSession.isUserSignedIn()" id="pool-section">
+  <div id="pool-box">
+    <h2 id="pool-title" class="font-prompt">Pool</h2>
+
+    <div id="add-remove-toggle">
+      <mat-button-toggle-group class="toggle-group" name="poolChoice">
+        <mat-button-toggle
+          [checked]="poolChoice === 'add'"
+          value="add"
+          (click)="toggle('add')"
+          class="first-toggle btn-toggle"
+          [ngClass]="{ 'btn-toggle-active': poolChoice === 'add' }"
+          >Add to Pool</mat-button-toggle
+        >
+        <mat-button-toggle
+          [checked]="poolChoice === 'remove'"
+          value="remove"
+          (click)="toggle('remove')"
+          class="second-toggle btn-toggle"
+          [ngClass]="{ 'btn-toggle-active': poolChoice === 'remove' }"
+          >Remove Liquidity</mat-button-toggle
+        >
+      </mat-button-toggle-group>
+    </div>
+
+    <div *ngIf="poolChoice == 'add'" id="add-div">
+      <div class="token-container">
+        <div class="fields">
+          <app-select
+            [list]="tokenList"
+            [selectedItem]="tokenAItem"
+          ></app-select>
+          <app-amount-input
+            [value]="tokenA_amt"
+            [min]="1"
+            [max]="10000000"
+            (valueChange)="updateTokenAmount($event, 'A')"
+            prefixValue=""
+          ></app-amount-input>
+        </div>
+        <div *ngIf="!!tokenAItem" class="balance-container">
+          <span>
+            Balance:
+            {{
+              tokenAItem.name == 'RED APPLES'
+                ? redApplesBalance
+                : greenApplesBalance
+            }}
+          </span>
+          <span style="opacity: 0">#</span>
+        </div>
+      </div>
+
+      <img
+        id="pool-add-icon"
+        src="../../assets/icons/pool-add-icon.svg"
+        alt="Arrow down"
+      />
+
+      <div class="token-container">
+        <div class="fields">
+          <app-select
+            [list]="tokenList"
+            [selectedItem]="tokenBItem"
+            arrowType="secondary"
+          ></app-select>
+          <app-amount-input
+            [value]="tokenB_amt"
+            [min]="1"
+            [max]="10000000"
+            (valueChange)="updateTokenAmount($event, 'B')"
+            prefixValue=""
+          ></app-amount-input>
+        </div>
+        <div *ngIf="!!tokenBItem" class="balance-container">
+          <span>
+            Balance:
+            {{
+              tokenBItem.name == 'GREEN APPLES'
+                ? greenApplesBalance
+                : redApplesBalance
+            }}
+          </span>
+          <span style="opacity: 0">#</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="poolChoice == 'remove'" id="remove-div">
+      <div class="token-container">
+        <div class="fields">
+          <app-select
+            class="h-full"
+            [selectedItem]="lpToken"
+            [canChange]="false"
+          ></app-select>
+          <app-amount-input
+            [value]="withdrawalPct"
+            (valueChange)="updateWithdrawalPercentage($event)"
+            [min]="1"
+            [max]="100"
+            prefixValue="Withdraw % of Your Liquidity"
+            prefixStyleType="secondary"
+          ></app-amount-input>
+        </div>
+        <div class="lp-balance">
+          <span>Balance: {{ greRedLpBalance }}</span>
+        </div>
+      </div>
+    </div>
+
+    <button
+      [disabled]="!((tokenA_amt >= 1 && tokenB_amt >= 1) || withdrawalPct > 0)"
+      id="confirm-button"
+      (click)="handleConfirm()"
+    >
+      Confirm
+    </button>
+  </div>
+</section>
+
+<div class="connect-wallet-container" *ngIf="!userSession.isUserSignedIn()">
+  <app-connect-wallet></app-connect-wallet>
+</div>
