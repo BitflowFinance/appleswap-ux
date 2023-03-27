@@ -1,1 +1,139 @@
-<p>earn works!</p>
+<div *ngIf="userSession.isUserSignedIn()" id="earn-container">
+  <app-earn-page-data
+    (loadingChange)="setIsLoading($event)"
+  ></app-earn-page-data>
+
+  <div class="loading-alert-container">
+    <div
+      class="loading-alert"
+      [ngClass]="{ hidden: !isLoadingRewardsAndBalance }"
+    >
+      <img src="../../assets/icons/flag.svg" alt="Flag icon" />
+      <span>
+        <span>Scanning in Progress:</span> Rewards and Balances may take 2-3
+        minutes to load - please do not refresh page.
+      </span>
+    </div>
+  </div>
+
+  <section class="mobile earn-section-mobile">
+    <div class="earn-section-mobile-box">
+      <h2 class="earn-title">Escrow</h2>
+      <div class="token-container">
+        <div class="fields">
+          <div>
+            <app-select
+              [selectedItem]="lpEarnToken"
+              [canChange]="false"
+            ></app-select>
+          </div>
+          <app-amount-input
+            [value]="lpToken_amt_user_earn"
+            (valueChange)="updateTokenAmount($event)"
+          ></app-amount-input>
+        </div>
+        <div class="balance-container" *ngIf="!!lpEarnToken">
+          <span> Balance: {{ lpTokenBalance }} </span>
+          <span style="opacity: 0">#</span>
+        </div>
+      </div>
+
+      <div
+        class="token-container slider-section no-bg no-border mobile-cycles-token"
+      >
+        <div class="fields">
+          <div class="cycles-input-container">
+            <div class="text-cycles">
+              <span>
+                <strong>Number of Cycles</strong><br />(1 Cycle ~ 12 Hours)
+              </span>
+            </div>
+            <div class="max-72">
+              <app-amount-input
+                [value]="numCycles"
+                (valueChange)="onNumCyclesInputChange($event)"
+                [min]="1"
+                [max]="100"
+                [isSliderAmount]="true"
+                prefixStyleType="secondary"
+              ></app-amount-input>
+            </div>
+          </div>
+          <mat-slider min="1" max="100" step="1" color="#3853C2">
+            <input
+              matSliderThumb
+              [value]="numCycles"
+              (valueChange)="updateNumCycles($event)"
+            />
+          </mat-slider>
+        </div>
+      </div>
+
+      <button class="confirm-button" (click)="stakeOrEscrow()">Confirm</button>
+    </div>
+  </section>
+
+  <!-- DESKTOP VERSION START -->
+  <section class="earn-section desktop">
+    <div class="earn-grid-container">
+      <div class="earn-box">
+        <h2 class="earn-title">Escrow</h2>
+
+        <div class="token-container">
+          <div class="fields">
+            <div>
+              <app-select
+                [selectedItem]="lpEarnToken"
+                [canChange]="false"
+              ></app-select>
+            </div>
+            <app-amount-input
+              [value]="lpToken_amt_user_earn"
+              (valueChange)="updateTokenAmount($event)"
+            ></app-amount-input>
+          </div>
+          <div class="balance-container" *ngIf="!!lpEarnToken">
+            <span> Balance: {{ lpTokenBalance }} </span>
+            <span style="opacity: 0">#</span>
+          </div>
+        </div>
+
+        <div
+          class="token-container slider-section no-bg no-border mobile-cycles-token"
+        >
+          <div class="fields">
+            <div class="cycles-input-container">
+              <div class="text-cycles">
+                <span>
+                  <strong>Number of Cycles</strong><br />(1 Cycle ~ 12 Hours)
+                </span>
+              </div>
+              <div class="max-72">
+                <app-amount-input
+                  [value]="numCycles"
+                  (valueChange)="onNumCyclesInputChange($event)"
+                  [min]="1"
+                  [max]="100"
+                  [isSliderAmount]="true"
+                  prefixStyleType="secondary"
+                ></app-amount-input>
+              </div>
+            </div>
+            <mat-slider min="1" max="100" step="1">
+              <input
+                matSliderThumb
+                [value]="numCycles"
+                (valueChange)="updateNumCycles($event)"
+              />
+            </mat-slider>
+          </div>
+        </div>
+
+        <button class="confirm-button" (click)="stakeOrEscrow()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- DESKTOP VERSION END -->
+</div>

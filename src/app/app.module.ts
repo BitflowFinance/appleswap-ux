@@ -15,8 +15,9 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatSliderModule } from '@angular/material/slider'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { UserTokensComponent } from './components/user-tokens/user-tokens.component'
+import { EarnPageDataComponent } from './components/earn-page-data/earn-page-data.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserTokensComponent } from './components/user-tokens/user-tokens.compon
     EarnComponent,
     FaucetComponent,
     SwapTransactionSettingsDialogComponent,
-    UserTokensComponent
+    UserTokensComponent,
+    EarnPageDataComponent
   ],
   imports: [
     BrowserModule,

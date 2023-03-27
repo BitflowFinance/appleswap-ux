@@ -1,0 +1,156 @@
+<section class="principal-in-escrow-mobile mobile">
+  <div class="principal-in-escrow-box">
+    <h3>Principal in Escrow</h3>
+    <div class="horizontal-divider"></div>
+    <ul class="tokens-list mt-1">
+      <li class="tokens-item" *ngFor="let token of escrowedTokens">
+        <div>
+          <div class="token-icon-container">
+            <img
+              [src]="'../../../assets/icons/' + token.icon"
+              [alt]="token.name + ' icon'"
+            />
+          </div>
+          <span>{{ token.name }}</span>
+        </div>
+        <span *ngIf="!isLoading; else loadingAmount">
+          {{ formatAmount(token.amount) }}
+        </span>
+      </li>
+    </ul>
+
+    <span class="principal-to-claim-span">Principal to Claim</span>
+    <div class="horizontal-divider"></div>
+    <ul class="tokens-list mt-1">
+      <li class="tokens-item" *ngFor="let token of principalToClaimTokens">
+        <div>
+          <div class="token-icon-container">
+            <img
+              [src]="'../../../assets/icons/' + token.icon"
+              [alt]="token.name + ' icon'"
+            />
+          </div>
+          <span>{{ token.name }}</span>
+        </div>
+        <span *ngIf="!isLoading; else loadingAmount">{{
+          formatAmount(token.amount)
+        }}</span>
+      </li>
+    </ul>
+
+    <div class="user-rewards my-rewards-mobile-container">
+      <h3 class="my-rewards-mobile-title">My Rewards</h3>
+      <span *ngIf="!isLoading">{{ getUserRewardsAmount() }}</span>
+    </div>
+    <div class="horizontal-divider"></div>
+    <ul class="tokens-list mt-1">
+      <li class="tokens-item" *ngFor="let token of userRewardsTokens">
+        <div>
+          <div class="token-icon-container">
+            <img
+              class="reward-token-icon"
+              [src]="'../../../assets/icons/' + token.icon"
+              [alt]="token.name + ' icon'"
+            />
+          </div>
+          <span>{{ token.name }}</span>
+        </div>
+        <span *ngIf="!isLoading; else loadingAmount">{{
+          formatAmount(token.amount)
+        }}</span>
+      </li>
+    </ul>
+
+    <button id="claim-all-button" (click)="claimAllRewards()">Claim All</button>
+  </div>
+</section>
+
+<!-- DESKTOP VERSION START -->
+<section class="earn-data-container desktop">
+  <div class="earn-data-box">
+    <div class="first first-background">
+      <h3>Principal in Escrow</h3>
+
+      <div class="horizontal-divider"></div>
+
+      <div class="tokens-container">
+        <ul class="tokens-list">
+          <li class="tokens-item" *ngFor="let token of escrowedTokens">
+            <div>
+              <div class="token-icon-container">
+                <img
+                  [src]="'../../../assets/icons/' + token.icon"
+                  [alt]="token.name + ' icon'"
+                />
+              </div>
+              <span>{{ token.name }}</span>
+            </div>
+            <span *ngIf="!isLoading; else loadingAmount">
+              {{ formatAmount(token.amount) }}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <h4 class="principal-claim-title mt-46">Principal to Claim</h4>
+
+      <div class="horizontal-divider"></div>
+
+      <div class="tokens-container">
+        <ul class="tokens-list">
+          <li class="tokens-item" *ngFor="let token of principalToClaimTokens">
+            <div>
+              <div class="token-icon-container">
+                <img
+                  [src]="'../../../assets/icons/' + token.icon"
+                  [alt]="token.name + ' icon'"
+                />
+              </div>
+              <span>{{ token.name }}</span>
+            </div>
+            <span *ngIf="!isLoading; else loadingAmount">{{
+              formatAmount(token.amount)
+            }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="first">
+      <h3>My Rewards</h3>
+
+      <div class="horizontal-divider"></div>
+
+      <div class="tokens-container">
+        <ul id="rewards-tokens-list" class="tokens-list">
+          <li class="tokens-item" *ngFor="let token of userRewardsTokens">
+            <div>
+              <div class="token-icon-container">
+                <img
+                  class="reward-token-icon"
+                  [src]="'../../../assets/icons/' + token.icon"
+                  [alt]="token.name + ' icon'"
+                />
+              </div>
+              <span>{{ token.name }}</span>
+            </div>
+            <span *ngIf="!isLoading; else loadingAmount">{{
+              formatAmount(token.amount)
+            }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <button id="claim-all-button" (click)="claimAllRewards()">
+        Claim All
+      </button>
+    </div>
+  </div>
+</section>
+<!-- DESKTOP VERSION END -->
+
+<ng-template #loadingAmount>
+  <div class="loading-container">
+    <span>Scanning...</span>
+  </div>
+</ng-template>
