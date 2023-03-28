@@ -119,10 +119,6 @@ export class SwapComponent {
   }
 
   async swapXforY(tokenX: SelectItem, tokenY: SelectItem, x: number, y: number) {
-    // if (!tokenX || !tokenY || !x || !y) return
-    // TODO: implement swap logic
-    x = Math.floor(x * 1e6);
-    y = Math.floor(y * 1e6);
     var slippageFactor = 1 - this.slippageTolerance;
     var min_dy = Math.floor(y * slippageFactor);
 
@@ -201,14 +197,14 @@ export class SwapComponent {
         // get the green-apples price based on pool ratio
         this.tokenBAmtLoading = true;
         this.get_dy(val)
-          .then((dy) => (this.tokenB_amt = dy / 1e6))
+          .then((dy) => (this.tokenB_amt = dy))
           .finally(() => (this.tokenBAmtLoading = false));
 
       } else if (this.tokenAItem.name == 'GAPL' && this.tokenBItem.name == 'RAPL') {
         // get the red-apples price based on pool ratio
         this.tokenBAmtLoading = true;
         this.get_dx(val)
-          .then((dx) => (this.tokenB_amt = dx / 1e6))
+          .then((dx) => (this.tokenB_amt = dx))
           .finally(() => (this.tokenBAmtLoading = false));
       }
     } else if (tokenType == 'B') {
@@ -228,7 +224,7 @@ export class SwapComponent {
       contractAddress: contractAddress,
       contractName: contractName,
       functionName: 'get-dy',
-      functionArgs: [tX, tY, uintCV(dx * 1e6)],
+      functionArgs: [tX, tY, uintCV(dx)],
       senderAddress: this.txSenderAddress,
     };
     const result = await callReadOnlyFunction(options);
@@ -248,7 +244,7 @@ export class SwapComponent {
       contractAddress: contractAddress,
       contractName: contractName,
       functionName: 'get-dx',
-      functionArgs: [tY, tX, uintCV(dy * 1e6)],
+      functionArgs: [tY, tX, uintCV(dy)],
       senderAddress: this.txSenderAddress,
     };
     const result = await callReadOnlyFunction(options);
