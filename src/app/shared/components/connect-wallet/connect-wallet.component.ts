@@ -18,7 +18,7 @@ export class ConnectWalletComponent implements OnInit {
   authenticate() {
     showConnect({
       appDetails: {
-        name: 'Stacks Angular Starter',
+        name: 'Apple Swap',
         icon: window.location.origin + '/logo240.png',
       },
       redirectTo: '/',
