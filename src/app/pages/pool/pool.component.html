@@ -110,7 +110,7 @@
     </div>
 
     <button
-      [disabled]="!((tokenA_amt >= 1 && tokenB_amt >= 1) || withdrawalPct > 0)"
+      [disabled]="!((tokenA_amt > 0 || tokenB_amt > 0) || withdrawalPct > 0)"
       id="confirm-button"
       (click)="handleConfirm()"
     >
