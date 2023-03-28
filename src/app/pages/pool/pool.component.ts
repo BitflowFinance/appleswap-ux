@@ -179,7 +179,7 @@ export class PoolComponent {
       this.txSenderAddress,
       FungibleConditionCode.GreaterEqual,
       0,
-      createAssetInfo(this.deployerAddress, 'apples-lp', 'usd-lp')
+      createAssetInfo(this.deployerAddress, 'apple-lp', 'apple-lp')
     )
 
     var PC2 = makeContractFungiblePostCondition(
