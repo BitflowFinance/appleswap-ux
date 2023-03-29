@@ -146,9 +146,7 @@ export class EarnPageDataComponent {
   async getTokensEscrowedInCurrentCycle() {
     var txSenderAddress: string;
     
-    // get a list of most recent 1000 cycles to check
     (await this.getCurrentCycle());
-
 
     // read only function args
     var token_x = this.redApplesContract;
@@ -212,7 +210,7 @@ export class EarnPageDataComponent {
 
     this.userRewardsTokens[0].amount = res[0];
     this.userRewardsTokens[1].amount = res[1];
-    this.principalToClaimTokens[1].amount = res[2];
+    this.principalToClaimTokens[0].amount = res[2];
 
     return rapArrayDone
   }
