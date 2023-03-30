@@ -104,7 +104,7 @@ export class EarnPageDataComponent {
   ngOnInit(): void {
     this.setLoading(true);
     this.getTokensEscrowedInCurrentCycle().then((x) =>
-      this.getRewardsAndPrincipalOverManyCycles()      // this.getRewardsAndPrincipalPast1000CyclesWrapper()
+      this.getRewardsAndPrincipalPast30CyclesWrapper()    
       .then((rap) => console.log(rap))
       .finally(() => this.setLoading(false))
     )
@@ -171,12 +171,12 @@ export class EarnPageDataComponent {
 
   }
 
-  async getRewardsAndPrincipalPast1000CyclesWrapper() {
-    let output = (await this.getRewardsAndPrincipalPast1000Cycles());
+  async getRewardsAndPrincipalPast30CyclesWrapper() {
+    let output = (await this.getRewardsAndPrincipalPast30Cycles());
     return output
   }
 
-  async getRewardsAndPrincipalPast1000Cycles() {
+  async getRewardsAndPrincipalPast30Cycles() {
     // iterative over getRewardsAndPrincipalAtCycleI here b/c of read limit on devnet for getRewardsAndPrincipalSummary. 
     // can use an alternate method on test/main net
 
@@ -184,7 +184,7 @@ export class EarnPageDataComponent {
     (await this.getCurrentCycle());
     var cycleNum = Number(this.currentCycle);
     var cycleList : any[] = []
-    for (let i=0; i < 1000; i++) {
+    for (let i=0; i < 30; i++) {
       if (cycleNum - i >= 0) {
         cycleList.push(cycleNum - i)
       }
