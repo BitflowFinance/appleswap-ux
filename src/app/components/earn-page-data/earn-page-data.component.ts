@@ -104,7 +104,7 @@ export class EarnPageDataComponent {
   ngOnInit(): void {
     this.setLoading(true);
     this.getTokensEscrowedInCurrentCycle().then((x) =>
-      this.getRewardsAndPrincipalPast1000CyclesWrapper()
+      this.getRewardsAndPrincipalOverManyCycles()      // this.getRewardsAndPrincipalPast1000CyclesWrapper()
       .then((rap) => console.log(rap))
       .finally(() => this.setLoading(false))
     )
@@ -306,6 +306,46 @@ export class EarnPageDataComponent {
         console.log('onCancel:', 'Transaction was canceled');
       },
     });
+  }
+
+  async getRewardsAndPrincipalOverManyCycles() {
+    var txSenderAddress: string;
+    
+    // get a list of most recent 1000 cycles to check
+    (await this.getCurrentCycle());
+    var txSenderAddress: string;
+    console.log(this.currentCycle)
+    var cycleNum = Number(this.currentCycle);
+    var cycleList : any[] = []
+    for (let i=0; i < 1000; i++) {
+      if (cycleNum - i >= 0) {
+        cycleList.push(uintCV(cycleNum - i))
+      }
+    }
+    cycleList.reverse();
+
+    // read only function args
+    var token_x = this.redApplesContract;
+    var token_y = this.greenApplesContract;
+    var token_lp = this.lpContract;
+
+    txSenderAddress = userSession.loadUserData().profile.stxAddress.testnet;
+
+    var who = principalCV(txSenderAddress)
+
+
+    var options = {
+      network: this.network,
+      contractAddress: 'STRP7MYBHSMFH5EGN3HGX6KNQ7QBHVTBPF1669DW',
+      contractName: 'appleswap-v1-1',
+      functionName: 'get-rewards-and-principal-many-cycles',
+      functionArgs: [listCV(cycleList), who, token_x, token_y, token_lp],
+      senderAddress: txSenderAddress
+
+    }
+    const result = await callReadOnlyFunction(options);
+    var output = cvToValue(result);
+    console.log(output);
   }
 
   setLoading(loading: boolean) {
