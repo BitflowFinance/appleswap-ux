@@ -1,4 +1,14 @@
 <section *ngIf="userSession.isUserSignedIn()" id="mint-section">
+  <div *ngIf="loggedInAsAdmin">
+    <div class="buttons-container" id="add-pool">
+      <button class="confirm-button" (click)="createPool()">
+        Create RAPL/GAPL Pool
+      </button>
+      <button class="confirm-button" (click)="setPairApproval()">
+        Approve RAPL/GAPL Pair
+      </button>
+    </div>
+  </div>
   <div id="mint-box">
     <h2 id="mint-title">Mint</h2>
 
